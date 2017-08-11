@@ -3,7 +3,7 @@
 const GitHubStrategy = require('passport-github').Strategy;
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const LinkedInStrategy = require('passport-linkedin-oauth2').Strategy;
-const User = require('../app/models/User.js');
+const User = require('../models/user.js');
 
 const googleAuth = {
   clientID: process.env.GOOGLE_KEY,
