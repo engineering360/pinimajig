@@ -1,0 +1,19 @@
+{
+  "name": "pin-images",
+  "version": "0.1.0",
+  "description": "Pin images to your wall",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha -R spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Motardo/pin-images.git"
+  },
+  "author": "Nathan Wilson <nswilson@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Motardo/pin-images/issues"
+  },
+  "homepage": "https://github.com/Motardo/pin-images#readme"
+}
