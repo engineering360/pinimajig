@@ -9,6 +9,7 @@ const googleAuth = {
   clientID: process.env.GOOGLE_KEY,
   clientSecret: process.env.GOOGLE_SECRET,
   callbackURL: `${process.env.APP_URL}auth/google/callback`,
+  scope: ['profile'],
 };
 const githubAuth = {
   clientID: process.env.GITHUB_KEY,
