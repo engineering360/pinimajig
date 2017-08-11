@@ -28,13 +28,12 @@ module.exports = (function UserController() {
     User.findById(req.params.id)
       .then((user) => {
         if (user) {
-          const active = req.params.id === req.user.id ? 'profile' : '';
           return res.render('users/show', {
             title: user.username,
             user: req.user,
             showUser: user,
             messages: req.flash('info'),
-            active,
+            active: 'user',
           });
         }
         req.flash('info', { warning: 'User not found' });
