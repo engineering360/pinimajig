@@ -19,8 +19,11 @@ router.post('/users/update', isLoggedIn, users.updateProfile);
 router.get('/users/:id/', users.show);
 
 router.get('/images', images.index);
-router.post('/images/:id/like', images.like, images.imageRedirect);
-router.post('/images/:id/unlike', images.unlike, images.imageRedirect);
+router.post('/images/add', images.add, images.redirect);
+router.get('/images/:id/like', images.like, images.redirect);
+router.get('/images/:id/unlike', images.unlike, images.redirect);
+router.get('/images/:id/remove', images.remove, images.redirect);
+
 router.get('/', (req, res) => res.redirect('/images'));
 
 module.exports = router;

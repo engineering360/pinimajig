@@ -22,15 +22,7 @@ function index(req, res, next) {
     .catch(next);
 }
 
-function newImage(req, res) {
-  res.render('images/new', {
-    title: 'New Image',
-    user: req.user,
-    messages: req.flash('info'),
-  });
-}
-
-function addImage(req, res, next) {
+function add(req, res, next) {
   const { url, caption } = req.body;
   const image = {
     owner: req.user._id,
@@ -40,29 +32,29 @@ function addImage(req, res, next) {
 
   createImage(image)
     .then(() => {
-      req.flash('info', { success: 'Image successfuly added' });
-      res.redirect(`/user/${req.user.id}/images`);
+      req.flash('info', { success: 'Image added' });
+      next();
     })
     .catch(next);
 }
 
-function removeImage(req, res, next) {
+function remove(req, res, next) {
   removeOwnImage(req.params.id, req.user.id)
     .then(() => {
       req.flash('info', { success: 'Image removed' });
-      return res.redirect(`/user/${req.user.id}/images`);
+      next();
     })
     .catch((err) => {
       if (err.notOwnImage) {
         req.flash('info', { danger: 'Not authorized to delete that image' });
-        return res.redirect(`/user/${req.user.id}/images`);
+        return next();
       }
       throw err;
     })
     .catch(next);
 }
 
-function imageRedirect(req, res) {
+function redirect(req, res) {
   if (req.query.userId) {
     return res.redirect(`/user/${req.query.userId}/images`);
   }
@@ -89,11 +81,10 @@ function unlike(req, res, next) {
 
 module.exports = {
   index,
-  newImage,
-  addImage,
-  removeImage,
+  add,
+  remove,
   like,
   unlike,
-  imageRedirect,
+  redirect,
 };
 
