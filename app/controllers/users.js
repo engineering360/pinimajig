@@ -33,7 +33,7 @@ module.exports = (function UserController() {
             user: req.user,
             showUser: user,
             messages: req.flash('info'),
-            active: 'user',
+            active: (req.user || {}).id === user.id ? 'profile' : '',
           });
         }
         req.flash('info', { warning: 'User not found' });
