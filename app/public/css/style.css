@@ -83,12 +83,10 @@
   margin: 0 auto;
 }
 
-.pin {
-  border: 1px solid purple;
-}
-
-.pin img {
-  height: 200px;
+.btn-delete {
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 
 .btn-primary {
@@ -99,4 +97,25 @@
 .btn-primary:hover {
   background-color: #85a;
   border-color: #435;
+}
+
+.pin-container {
+  box-shadow: 10px 5px 5px #536;
+  height: 300px;
+  position: relative;
+}
+
+.pin-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: white;
+  width: 100%;
+  padding: 0 10px;
+}
+.pin img {
+  max-height: 230px;
+  max-width: 100%;
+  display: block;
+  margin: 5px auto;
 }

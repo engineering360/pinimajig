@@ -20,17 +20,20 @@ mixin likeBtn(image)
 
 mixin deleteBtn(image)
   if user && user.id === image.owner._id.toString()
-    a.btn.btn-danger.pull-right(href=`/images/${image.id}/remove`) &times;
+    a.btn.btn-danger.btn-delete(href=`/images/${image.id}/remove`) &times;
 
 .row.pins
   each image in images
     .col-lg-3.col-md-4.col-sm-6.col-xs-12.pin
-      +deleteBtn(image)
-      a(href=`${image.url}`): img(src=`${image.url}`)
-      p #{image.caption}
-      p
-        span.text-muted
-          | by&nbsp;
-          +userLink(image.owner)
-      p
-        +likeBtn(image)
+      .pin-container
+        .pin-image
+          +deleteBtn(image)
+          a(href=`${image.url}`): img(src=`${image.url}`)
+        .pin-caption
+          p.text-center #{image.caption}
+          .pin-btns
+            p
+              span.text-muted.pull-right
+                | by&nbsp;
+                +userLink(image.owner)
+              +likeBtn(image)
