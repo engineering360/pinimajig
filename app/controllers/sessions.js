@@ -26,6 +26,7 @@ module.exports = (function SessionsController() {
   }
 
   function showLogin(req, res) {
+    req.session.returnTo = req.get('Referer');
     res.render('login', { title: 'Login', user: req.user, active: 'login' });
   }
 
@@ -39,7 +40,7 @@ module.exports = (function SessionsController() {
     const options = {
       failureRedirect: '/login',
       failureFlash: true,
-      successReturnToOrRedirect: '/my-pins',
+      successReturnToOrRedirect: '/users/my-pins',
       successFlash: { info: { success: 'Login successful' } },
     };
     passport.authenticate(strategy, options)(req, res, next);
