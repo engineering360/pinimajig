@@ -42,6 +42,27 @@ module.exports = (function UserController() {
       .catch(next);
   }
 
+  function pins(req, res, next) {
+    User.findById(req.params.id)
+      .populate('images')
+      .sort({ _id: -1 })
+      .then((user) => {
+        if (user) {
+          return res.render('users/pins', {
+            title: `${user.username}'s Pins`,
+            user: req.user,
+            showUser: user,
+            messages: req.flash('info'),
+            active: 'pins',
+            isShowUser: (req.user || {}).id === user.id,
+          });
+        }
+        req.flash('info', { warning: 'User not found' });
+        return res.redirect('/users');
+      })
+      .catch(next);
+  }
+
   function updateProfile(req, res, next) {
     const { username, fullName, city } = req.body;
 
@@ -57,6 +78,7 @@ module.exports = (function UserController() {
     edit,
     index,
     show,
+    pins,
     updateProfile,
   };
 }());

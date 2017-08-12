@@ -17,6 +17,7 @@ router.get('/users', users.index);
 router.get('/users/edit', isLoggedIn, users.edit);
 router.post('/users/update', isLoggedIn, users.updateProfile);
 router.get('/users/:id/', users.show);
+router.get('/users/:id/pins', users.pins);
 
 router.get('/images', images.index);
 router.post('/images/add', images.add, images.redirect);

@@ -1,6 +1,6 @@
 extends ../layout
 block content
-  if user
+  if isShowUser
     form.form-horizontal(method='post' action='/images/add')
       h3.col-sm-offset-2 Add Image <small> for #{user.username}</small>
       .form-group
@@ -22,14 +22,14 @@ block content
       .form-group
         .col-sm-offset-2.col-sm-10
           button.btn.btn-default(type='submit') Add Image
-  else
-    a.btn.btn-default.col-xs-offset-2(href='/login') Login to Add Images
 
   .panel.panel-default
     .panel-heading: h2.text-center #{title}
     ul.list-goup
-      each image in images
+      each image in showUser.images
         li.list-group-item
           img(src=`${image.url}`)
           p #{image.url}
           p #{image.caption}
+          if isShowUser
+            p: a.btn.btn-danger(href=`/images/${image.id}/remove`) &times;

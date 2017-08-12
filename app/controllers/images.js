@@ -56,7 +56,7 @@ function remove(req, res, next) {
 
 function redirect(req, res) {
   if (req.query.userId) {
-    return res.redirect(`/user/${req.query.userId}/images`);
+    return res.redirect(`/users/${req.query.userId}/pins`);
   }
   return res.redirect('/images');
 }
