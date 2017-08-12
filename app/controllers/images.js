@@ -33,7 +33,7 @@ function add(req, res, next) {
   createImage(image)
     .then(() => {
       req.flash('info', { success: 'Image added' });
-      next();
+      return res.redirect(req.get('Referer'));
     })
     .catch(next);
 }
@@ -42,30 +42,23 @@ function remove(req, res, next) {
   removeOwnImage(req.params.id, req.user.id)
     .then(() => {
       req.flash('info', { success: 'Image removed' });
-      next();
+      return res.redirect(req.get('Referer'));
     })
     .catch((err) => {
       if (err.notOwnImage) {
         req.flash('info', { danger: 'Not authorized to delete that image' });
-        return next();
+        return res.redirect(req.get('Referer'));
       }
-      throw err;
+      return Promise.reject(err);
     })
     .catch(next);
-}
-
-function redirect(req, res) {
-  if (req.query.userId) {
-    return res.redirect(`/users/${req.query.userId}/pins`);
-  }
-  return res.redirect('/images');
 }
 
 function like(req, res, next) {
   likeImage(req.params.id, req.user)
     .then(() => {
       req.flash('info', { success: 'Image liked' });
-      return next();
+      return res.redirect(req.get('Referer'));
     })
     .catch(next);
 }
@@ -74,7 +67,7 @@ function unlike(req, res, next) {
   unlikeImage(req.params.id, req.user)
     .then(() => {
       req.flash('info', { success: 'Image unliked' });
-      return next();
+      return res.redirect(req.get('Referer'));
     })
     .catch(next);
 }
@@ -85,6 +78,5 @@ module.exports = {
   remove,
   like,
   unlike,
-  redirect,
 };
 

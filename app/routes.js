@@ -21,10 +21,10 @@ router.get('/users/:id/', users.show);
 router.get('/users/:id/pins', users.pins);
 
 router.get('/images', images.index);
-router.post('/images/add', isLoggedIn, images.add, images.redirect);
-router.get('/images/:id/like', isLoggedIn, images.like, images.redirect);
-router.get('/images/:id/unlike', isLoggedIn, images.unlike, images.redirect);
-router.get('/images/:id/remove', isLoggedIn, images.remove, images.redirect);
+router.post('/images/add', isLoggedIn, images.add);
+router.get('/images/:id/like', isLoggedIn, images.like);
+router.get('/images/:id/unlike', isLoggedIn, images.unlike);
+router.get('/images/:id/remove', isLoggedIn, images.remove);
 
 router.get('/', (req, res) => res.redirect('/images'));
 

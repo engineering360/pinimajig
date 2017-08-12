@@ -44,7 +44,13 @@ module.exports = (function UserController() {
 
   function findUser(userId) {
     return User.findById(userId)
-      .populate('images');
+      .populate({
+        path: 'images',
+        populate: {
+          path: 'likes',
+          ref: 'User',
+        },
+      });
   }
 
   function showUserPins(userId, req, res, next) {
