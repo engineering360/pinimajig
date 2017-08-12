@@ -1,4 +1,4 @@
-# pin-images
+# Pinimajig
 Pin links to images on your wall
 
 Browse recent images that all users have pinned
@@ -15,4 +15,5 @@ User:
 Image:
  - url
  - caption
+ - owner
  - likes: [userId]
