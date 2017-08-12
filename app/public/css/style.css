@@ -83,6 +83,10 @@
   margin: 0 auto;
 }
 
+.pin {
+  border: 1px solid purple;
+}
+
 .pin img {
   height: 200px;
 }

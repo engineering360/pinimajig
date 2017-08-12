@@ -1,17 +1,36 @@
 mixin likeBtn(image)
   if user
-    if image.likes.map(i => i._id.toString()).includes(user.id)
-      a(href=`/images/${image.id}/unlike`) Un-Like #{image.likes.length}
+    if user.id !== image.owner._id.toString()
+      if image.likes.map(i => i._id.toString()).includes(user.id)
+        a.btn.btn-default(href=`/images/${image.id}/unlike`)
+          span.glyphicon.glyphicon-heart(aria-hidden='true')
+          | &nbsp;Un-Like #{image.likes.length}
+      else
+        a.btn.btn-default(href=`/images/${image.id}/like`)
+          span.glyphicon.glyphicon-heart-empty(aria-hidden='true')
+          | &nbsp;Like #{image.likes.length}
     else
-      a(href=`/images/${image.id}/like`) Like #{image.likes.length}
+        a.btn.btn-default(title='You can\'t like your own pin')
+          span.glyphicon.glyphicon-heart-empty(aria-hidden='true')
+          | &nbsp;Like #{image.likes.length}
   else
-    | Likes #{image.likes.length}
+    a.btn.btn-default(href='/login' title='Login to like')
+      span.glyphicon.glyphicon-heart-empty(aria-hidden='true')
+      | &nbsp;Like #{image.likes.length}
+
+mixin deleteBtn(image)
+  if user && user.id === image.owner._id.toString()
+    a.btn.btn-danger.pull-right(href=`/images/${image.id}/remove`) &times;
 
 .row.pins
   each image in images
     .col-lg-3.col-md-4.col-sm-6.col-xs-12.pin
+      +deleteBtn(image)
       a(href=`${image.url}`): img(src=`${image.url}`)
-      p #{image.url}
       p #{image.caption}
-      p #{image.owner.username}
-      p: +likeBtn(image)
+      p
+        span.text-muted
+          | by&nbsp;
+          +userLink(image.owner)
+      p
+        +likeBtn(image)

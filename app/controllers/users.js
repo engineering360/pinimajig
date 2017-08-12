@@ -47,6 +47,13 @@ module.exports = (function UserController() {
       .populate({
         path: 'images',
         populate: {
+          path: 'owner',
+          ref: 'User',
+        },
+      })
+      .populate({
+        path: 'images',
+        populate: {
           path: 'likes',
           ref: 'User',
         },
