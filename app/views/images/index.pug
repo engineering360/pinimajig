@@ -5,11 +5,10 @@ block content
   else
     a.btn.btn-default.col-xs-offset-2(href='/login') Login to Add Images
 
-  .panel.panel-default
-    .panel-heading: h2.text-center #{title}
-    ul.list-goup
+    h2.text-center #{title}
+    .row.pins
       each image in images
-        li.list-group-item
-          img(src=`${image.url}`)
+        .col-lg-3.col-md-4.col-sm-6.col-xs-12.pin
+          a(href=`${image.url}`): img(src=`${image.url}`)
           p #{image.url}
           p #{image.caption}

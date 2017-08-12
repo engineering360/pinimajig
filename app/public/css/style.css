@@ -82,3 +82,7 @@
   max-width: 500px;
   margin: 0 auto;
 }
+
+.pin img {
+  height: 200px;
+}
