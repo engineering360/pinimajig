@@ -86,3 +86,13 @@
 .pin img {
   height: 200px;
 }
+
+.btn-primary {
+  background-color: #a577b4;
+  border-color: #637;
+}
+
+.btn-primary:hover {
+  background-color: #85a;
+  border-color: #435;
+}

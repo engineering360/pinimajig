@@ -1,7 +1,7 @@
 form.form-horizontal(method='post' action='/images/add')
-  h3.col-sm-offset-2 Add Image <small> for #{user.username}</small>
+  h3.col-sm-offset-2 Pin New Image <small> for #{user.username}</small>
   .form-group
-    label.col-sm-2.control-label(for='url') Url
+    label.col-sm-2.control-label(for='url') Image Url
     .col-sm-10
       input#bookName.form-control(
         type='text'
@@ -18,4 +18,4 @@ form.form-horizontal(method='post' action='/images/add')
         required)
   .form-group
     .col-sm-offset-2.col-sm-10
-      button.btn.btn-default(type='submit') Add Image
+      button.btn.btn-primary(type='submit') Pin Image
