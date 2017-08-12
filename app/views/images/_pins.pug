@@ -1,0 +1,17 @@
+mixin likeBtn(image)
+  if user
+    if image.likes.map(i => i._id.toString()).includes(user.id)
+      a(href=`/images/${image.id}/unlike`) Un-Like #{image.likes.length}
+    else
+      a(href=`/images/${image.id}/like`) Like #{image.likes.length}
+  else
+    | Likes #{image.likes.length}
+
+.row.pins
+  each image in images
+    .col-lg-3.col-md-4.col-sm-6.col-xs-12.pin
+      a(href=`${image.url}`): img(src=`${image.url}`)
+      p #{image.url}
+      p #{image.caption}
+      p #{image.owner.username}
+      p: +likeBtn(image)

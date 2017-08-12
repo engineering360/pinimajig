@@ -2,13 +2,7 @@ extends ../layout
 block content
   if isShowUser
     include ../images/_addImageForm
-  .panel.panel-default
-    .panel-heading: h2.text-center #{title}
-    ul.list-goup
-      each image in showUser.images
-        li.list-group-item
-          img(src=`${image.url}`)
-          p #{image.url}
-          p #{image.caption}
-          if isShowUser
-            p: a.btn.btn-danger(href=`/images/${image.id}/remove`) &times;
+  - const images = showUser.images
+  include ../images/_pins
+    if isShowUser
+      p: a.btn.btn-danger(href=`/images/${image.id}/remove`) &times;
