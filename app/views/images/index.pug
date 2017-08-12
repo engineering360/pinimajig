@@ -12,3 +12,9 @@ block content
           a(href=`${image.url}`): img(src=`${image.url}`)
           p #{image.url}
           p #{image.caption}
+          p #{image.owner.username}
+          p
+            if user
+              a(href=`/images/${image.id}/like`) Like #{image.likes.length}
+            else
+             Likes #{image.likes.length}

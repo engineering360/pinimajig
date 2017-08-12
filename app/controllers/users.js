@@ -42,10 +42,13 @@ module.exports = (function UserController() {
       .catch(next);
   }
 
-  function pins(req, res, next) {
-    User.findById(req.params.id)
-      .populate('images')
-      .sort({ _id: -1 })
+  function findUser(userId) {
+    return User.findById(userId)
+      .populate('images');
+  }
+
+  function showUserPins(userId, req, res, next) {
+    findUser(userId)
       .then((user) => {
         if (user) {
           return res.render('users/pins', {
@@ -61,6 +64,14 @@ module.exports = (function UserController() {
         return res.redirect('/users');
       })
       .catch(next);
+  }
+
+  function pins(req, res, next) {
+    showUserPins(req.params.id, req, res, next);
+  }
+
+  function myPins(req, res, next) {
+    showUserPins(req.user.id, req, res, next);
   }
 
   function updateProfile(req, res, next) {
@@ -79,6 +90,7 @@ module.exports = (function UserController() {
     index,
     show,
     pins,
+    myPins,
     updateProfile,
   };
 }());

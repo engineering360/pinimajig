@@ -31,7 +31,6 @@ module.exports = (function SessionsController() {
 
   function login(req, res, next) {
     const strategy = req.params.strategy;
-
     passport.authenticate(strategy)(req, res, next);
   }
 
@@ -40,6 +39,7 @@ module.exports = (function SessionsController() {
     const options = {
       failureRedirect: '/login',
       failureFlash: true,
+      successReturnToOrRedirect: '/my-pins',
       successFlash: { info: { success: 'Login successful' } },
     };
     passport.authenticate(strategy, options)(req, res, next);
