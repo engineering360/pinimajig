@@ -87,14 +87,24 @@
   opacity: 0.7;
 }
 
-.btn-primary {
-  background-color: #a577b4;
-  border-color: #637;
+.btn-main {
+  background-color: #d0b3da;
+  border-color: #8d4fa2;
 }
 
-.btn-primary:hover {
-  background-color: #85a;
-  border-color: #435;
+.btn-main:hover {
+  background-color: #b07fd1;
+  border-color: #8767a7;
+}
+
+.btn-like {
+  color: #ff0079;
+  border-color: #ff0079;
+}
+
+.pin a.btn-like:hover, .pin a.btn-like:active, .pin a.btn-like:focus {
+  color: #d40b57;
+  border-color: #d40b57;
 }
 
 .pin-container {
@@ -112,7 +122,7 @@
   width: 100%;
   padding: 0 10px;
 }
-.pin img {
+.pin img, object {
   max-height: 230px;
   max-width: 100%;
   display: block;
