@@ -84,9 +84,7 @@
 }
 
 .btn-delete {
-  position: absolute;
-  top: 0;
-  right: 0;
+  opacity: 0.7;
 }
 
 .btn-primary {
@@ -100,9 +98,10 @@
 }
 
 .pin-container {
-  box-shadow: 10px 5px 5px #536;
+  box-shadow: 10px 5px 12px #ccc;
   height: 300px;
   position: relative;
+  margin: 5px;
 }
 
 .pin-caption {

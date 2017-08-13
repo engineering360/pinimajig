@@ -27,8 +27,7 @@ mixin deleteBtn(image)
     .col-lg-3.col-md-4.col-sm-6.col-xs-12.pin
       .pin-container
         .pin-image
-          +deleteBtn(image)
-          a(href=`${image.url}`): img(src=`${image.url}`)
+          a(href=`${image.url}`): img(src=`${image.url}` onerror='this.onerror=null;this.src="/static/images/not-found.svg";')
         .pin-caption
           p.text-center #{image.caption}
           .pin-btns
@@ -36,4 +35,5 @@ mixin deleteBtn(image)
               span.text-muted.pull-right
                 | by&nbsp;
                 +userLink(image.owner)
+                +deleteBtn(image)
               +likeBtn(image)
