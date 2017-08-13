@@ -1,9 +1,12 @@
 extends layout
 block content
   .login-btns
-    a.btn.btn-lg.btn-block(href='/auth/google' alt='login with google')
+    a.btn.btn-lg.btn-block.btn-google(href='/auth/google' alt='login with google')
+      span.btn-icon: img(src='/static/images/google.png')
       | Sign in with Google
-    a.btn.btn-lg.btn-block(href='/auth/github' alt='login with github')
+    a.btn.btn-lg.btn-block.btn-github(href='/auth/github' alt='login with github')
+      span.btn-icon: img(src='/static/images/github.png')
       | Sign in with Github
-    a.btn.btn-lg.btn-block(href='/auth/linkedin' alt='login with linkedin')
+    a.btn.btn-lg.btn-block.btn-linkedin(href='/auth/linkedin' alt='login with linkedin')
+      span.btn-icon: img(src='/static/images/linkedin.png')
       | Sign in with LinkedIn
