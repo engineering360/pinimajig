@@ -20,7 +20,7 @@ mixin likeBtn(image)
 
 mixin deleteBtn(image)
   if user && user.id === image.owner._id.toString()
-    a.btn.btn-danger.btn-delete(href=`/images/${image.id}/remove`) &times;
+    a.btn.btn-danger.btn-delete(href=`/images/${image.id}/remove` title=`delete "${image.caption}"`) &times;
 
 .row.pins
   each image in images
@@ -37,5 +37,6 @@ mixin deleteBtn(image)
               span.text-muted.pull-right
                 | by&nbsp;
                 +userLink(image.owner)
+                | &nbsp;
                 +deleteBtn(image)
               +likeBtn(image)

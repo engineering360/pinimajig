@@ -69,7 +69,7 @@ module.exports = (function UserController() {
             user: req.user,
             showUser: user,
             messages: req.flash('info'),
-            active: 'pins',
+            // tell the view to include the add pin form
             isShowUser: (req.user || {}).id === user.id,
           });
         }
