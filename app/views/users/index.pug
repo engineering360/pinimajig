@@ -4,6 +4,6 @@ block content
   ul.list-group
     each user in users
       li.list-group-item
-        h4.list-group-item-heading: a(href=`/users/${user.id}`) #{user.username}
+        h4.list-group-item-heading: a(href=`/users/${user.id}/pins`) #{user.username}
         p.list-group-item-text= `City: ${user.city}`
         p.list-group-item-text
