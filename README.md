@@ -30,5 +30,4 @@ Image:
 
 ## Frontend
 All functionality is provided on the backend, and no javascript is delivered to the client.
-In the future javascript may be added as progressive enhancement to make the app more
-responsive and smooth.
+In the future javascript may be added as progressive enhancement to improve the user experience.
