@@ -9,6 +9,6 @@ dotenv.config();
 const app = require('./app/app');
 
 // start server
-const server = app.listen(process.env.PORT || 3000, () => {
+const server = app.listen(process.env.PORT || https://pinterest-clone-project.herokuapp.com/, () => {
   console.log(`server listening on port ${server.address().port}`);
 });
